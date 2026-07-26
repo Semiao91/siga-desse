@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useAuth } from '@/composables/useAuth'
+import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/auth'
 
-const { user, fetchCurrentUser } = useAuth()
+const authStore = useAuthStore()
+const { user } = storeToRefs(authStore)
+const { fetchCurrentUser } = authStore
 
 onMounted(() => {
   if (!user.value) {

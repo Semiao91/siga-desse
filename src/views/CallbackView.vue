@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useAuth } from '@/composables/useAuth'
+import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
-const { fetchCurrentUser } = useAuth()
+const { fetchCurrentUser } = useAuthStore()
 
 const errorMessage = ref<string | null>(null)
 
