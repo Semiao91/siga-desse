@@ -4,11 +4,11 @@ import { SpotifyIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/vue';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useAuth } from '@/composables/useAuth';
+import { useAuthStore } from '@/stores/auth';
 
 const route = useRoute()
 const router = useRouter()
-const { redirectToSpotifyLogin } = useAuth()
+const { redirectToSpotifyLogin } = useAuthStore()
 
 const isLoading = ref(false)
 const message = ref<{ type: 'error' | 'success'; text: string } | null>(null)

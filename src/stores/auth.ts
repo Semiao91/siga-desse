@@ -1,13 +1,12 @@
 import { ref } from 'vue'
+import { defineStore } from 'pinia'
 import * as authService from '@/services/auth.service'
 import type { AuthUser } from '@/services/auth.service'
 
-export type { AuthUser }
+export const useAuthStore = defineStore('auth', () => {
+  const user = ref<AuthUser | null>(null)
+  const isLoading = ref(false)
 
-const user = ref<AuthUser | null>(null)
-const isLoading = ref(false)
-
-export function useAuth() {
   async function fetchCurrentUser() {
     isLoading.value = true
     try {
@@ -30,4 +29,4 @@ export function useAuth() {
     logout,
     redirectToSpotifyLogin: authService.redirectToSpotifyLogin,
   }
-}
+})
