@@ -44,10 +44,9 @@ describe('useAuthStore', () => {
 
   it('clears the user after logging out', async () => {
     const mockUser = { id: '1', name: 'Bernardo', email: null, avatarUrl: null }
-    vi.mocked(authService.getCurrentUser).mockResolvedValue(mockUser)
-    vi.mocked(authService.logout).mockResolvedValue(undefined)
-
     const store = useAuthStore()
+
+    vi.mocked(authService.getCurrentUser).mockResolvedValue(mockUser)
     await store.fetchCurrentUser()
     expect(store.user).toEqual(mockUser)
 
