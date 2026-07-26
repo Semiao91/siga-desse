@@ -17,7 +17,7 @@ describe('useAuthStore', () => {
   })
 
   it('stores the resolved user and toggles isLoading while fetching', async () => {
-    const mockUser = { id: '1', name: 'Bernardo', email: 'b@example.com' }
+    const mockUser = { id: '1', name: 'Bernardo', email: 'b@example.com', avatarUrl: 'https://example.com/me.jpg' }
     vi.mocked(authService.getCurrentUser).mockResolvedValue(mockUser)
 
     const store = useAuthStore()
@@ -43,7 +43,7 @@ describe('useAuthStore', () => {
   })
 
   it('clears the user after logging out', async () => {
-    const mockUser = { id: '1', name: 'Bernardo', email: null }
+    const mockUser = { id: '1', name: 'Bernardo', email: null, avatarUrl: null }
     vi.mocked(authService.getCurrentUser).mockResolvedValue(mockUser)
     vi.mocked(authService.logout).mockResolvedValue(undefined)
 
@@ -69,6 +69,7 @@ describe('useAuthStore', () => {
       id: '1',
       name: 'Bernardo',
       email: null,
+      avatarUrl: null,
     })
     const firstStore = useAuthStore()
     await firstStore.fetchCurrentUser()

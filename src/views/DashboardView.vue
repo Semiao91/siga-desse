@@ -1,23 +1,14 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAuthStore } from '@/stores/auth'
-
-const authStore = useAuthStore()
-const { user } = storeToRefs(authStore)
-const { fetchCurrentUser } = authStore
-
-onMounted(() => {
-  if (!user.value) {
-    fetchCurrentUser()
-  }
-})
+import TopNav from '@/components/dashboard/TopNav.vue'
 </script>
 
 <template>
-  <div class="min-h-screen grid place-items-center bg-background">
-    <p class="text-foreground text-[15px]">
-      Welcome{{ user?.name ? `, ${user.name}` : '' }}. Dashboard coming soon.
-    </p>
+  <div
+    class="min-h-screen grid grid-rows-[auto_1fr] [background:radial-gradient(1200px_600px_at_80%_-10%,oklch(from_var(--primary)_l_c_h/8%),transparent_60%),radial-gradient(800px_400px_at_0%_0%,oklch(from_var(--primary)_0.5_0.18_200/5%),transparent_60%),var(--background)]"
+  >
+    <TopNav />
+    <main>
+      <RouterView />
+    </main>
   </div>
 </template>
