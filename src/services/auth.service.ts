@@ -1,9 +1,10 @@
-import { API_URL, apiFetch, ApiError } from '@/lib/api'
+import { API_URL, ApiError, apiFetch } from '@/lib/api'
 
-export interface AuthUser {
+export type AuthUser = {
   id: string
   name: string | null
   email: string | null
+  avatarUrl: string | null
 }
 
 export function getSpotifyLoginUrl(): string {
